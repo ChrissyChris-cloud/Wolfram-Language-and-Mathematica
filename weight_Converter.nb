@@ -1,0 +1,166 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6314,        156]
+NotebookOptionsPosition[      5730,        135]
+NotebookOutlinePosition[      6324,        157]
+CellTagsIndexPosition[      6245,        152]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"convertWeight", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"unit", ",", "factor", ",", "weight", ",", "again"}], "}"}], ",",
+      "\[IndentingNewLine]", "  ", 
+     RowBox[{
+      RowBox[{
+      "Print", "[", "\"\<Weight converter (lb \[LeftRightArrow] kg)\>\"", 
+       "]"}], ";", "\[IndentingNewLine]", "  ", 
+      RowBox[{"unit", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", "  ", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"unit", "=!=", "\"\<quit\>\""}], ",", "\[IndentingNewLine]", 
+        "    ", 
+        RowBox[{
+         RowBox[{"unit", "=", 
+          RowBox[{"StringTrim", "@", 
+           RowBox[{"ToLowerCase", "@", 
+            RowBox[{
+            "InputString", "[", "\"\<Lbs or Kg? (or 'quit' to exit): \>\"", 
+             "]"}]}]}]}], ";", "\[IndentingNewLine]", "    ", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"factor", ",", "unit"}], "}"}], "=", "\[IndentingNewLine]",
+           "     ", 
+          RowBox[{"Switch", "[", 
+           RowBox[{"unit", ",", "\[IndentingNewLine]", "      ", 
+            
+            RowBox[{"\"\<lbs\>\"", " ", "|", " ", "\"\<lb\>\"", " ", "|", 
+             " ", "\"\<pounds\>\"", " ", "|", " ", "\"\<pound\>\""}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0.45359237", ",", "\"\<kg\>\""}], "}"}], ",", 
+            "\[IndentingNewLine]", "      ", 
+            
+            RowBox[{"\"\<kg\>\"", " ", "|", " ", "\"\<kgs\>\"", " ", "|", 
+             " ", "\"\<kilograms\>\"", " ", "|", " ", "\"\<kilogram\>\""}], ",", 
+            RowBox[{"{", 
+             RowBox[{"2.20462262", ",", "\"\<lb\>\""}], "}"}], ",", 
+            "\[IndentingNewLine]", "      ", 
+            
+            RowBox[{"\"\<quit\>\"", " ", "|", " ", "\"\<q\>\"", " ", "|", 
+             " ", "\"\<exit\>\""}], ",", 
+            RowBox[{"Return", "[", 
+             RowBox[{"Print", "[", "\"\<Bye!\>\"", "]"}], "]"}], ",", 
+            "\[IndentingNewLine]", "      ", "_", ",", 
+            RowBox[{"{", 
+             RowBox[{"Null", ",", 
+              RowBox[{
+              "Print", 
+               "[", "\"\<Please type 'lbs' or 'kg' (or 'quit' to exit)\>\"", 
+               "]"}]}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", "    ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"NumericQ", "[", "factor", "]"}], ",", 
+           "\[IndentingNewLine]", "     ", 
+           RowBox[{
+            RowBox[{"weight", "=", 
+             RowBox[{"ToExpression", "@", 
+              RowBox[{"InputString", "[", "\"\<Enter weight: \>\"", "]"}]}]}],
+             ";", "\[IndentingNewLine]", "     ", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"NumericQ", "[", "weight", "]"}], "&&", 
+               RowBox[{"weight", ">=", "0"}]}], ",", "\[IndentingNewLine]", 
+              "      ", 
+              RowBox[{"Print", "[", 
+               RowBox[{"Row", "[", 
+                RowBox[{"{", 
+                 RowBox[{"weight", ",", "\"\< \>\"", ",", 
+                  RowBox[{"unit", " ", "/.", " ", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"\<kg\>\"", "->", "\"\<lb\>\""}], ",", 
+                    RowBox[{"\"\<lb\>\"", "->", "\"\<kg\>\""}]}], "}"}]}], ",",
+                   "\[IndentingNewLine]", "         ", "\"\< = \>\"", ",", 
+                  RowBox[{"NumberForm", "[", 
+                   RowBox[{
+                    RowBox[{"weight", " ", "factor"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"Infinity", ",", "2"}], "}"}]}], "]"}], 
+                  ",", "\"\< \>\"", ",", "\[IndentingNewLine]", "         ", 
+                  "unit"}], "}"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+              "      ", 
+              RowBox[{
+              "Print", 
+               "[", "\"\<Please enter a valid non-negative number.\>\"", 
+               "]"}]}], "\[IndentingNewLine]", "      ", "]"}], ";", 
+            "\[IndentingNewLine]", "     ", 
+            RowBox[{"again", "=", 
+             RowBox[{"StringTrim", "@", 
+              RowBox[{"ToLowerCase", "@", 
+               RowBox[{
+               "InputString", "[", "\"\<Another conversion? (y/n): \>\"", 
+                "]"}]}]}]}], ";", "\[IndentingNewLine]", "     ", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"!", 
+               RowBox[{"StringStartsQ", "[", 
+                RowBox[{"again", ",", "\"\<y\>\""}], "]"}]}], ",", 
+              RowBox[{
+               RowBox[{"Print", "[", "\"\<Done. Good Bye!\>\"", "]"}], ";", 
+               " ", "\[IndentingNewLine]", "      ", 
+               RowBox[{"unit", "=", "\"\<quit\>\""}]}]}], "]"}]}]}], 
+          "\[IndentingNewLine]", "     ", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "    ", "]"}]}]}], "\[IndentingNewLine]", "  ", 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"convertWeight", "[", "]"}]}], "Input",
+ CellTags->"ChatGeneratedCell",
+ CellLabel->"In[3]:=",ExpressionUUID->"43767795-a118-7841-ad06-55179bf70441"]
+},
+WindowSize->{960, 532},
+WindowMargins->{{-5.5, Automatic}, {Automatic, -5.5}},
+FrontEndVersion->"14.3 for Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"31876651-409a-b545-a798-51b787d1ac4f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ChatGeneratedCell"->{
+  Cell[554, 20, 5172, 113, 522, "Input",ExpressionUUID->"43767795-a118-7841-ad06-55179bf70441",
+   CellTags->"ChatGeneratedCell"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ChatGeneratedCell", 6090, 146}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 5172, 113, 522, "Input",ExpressionUUID->"43767795-a118-7841-ad06-55179bf70441",
+ CellTags->"ChatGeneratedCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
